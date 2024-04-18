@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
 
 	exibeIntroducao()
+	exibeMenu()
 
 	comando := leComando()
 
@@ -16,7 +18,7 @@ func main() {
 	case 2:
 		fmt.Print("Exibindo Logs...")
 	case 0:
-		fmt.Println("Saindo do programa.")
+		os.Exit(0)
 	default:
 		fmt.Print("Não conheço este comando!")
 	}
@@ -30,11 +32,15 @@ func exibeIntroducao() {
 	fmt.Println("Este programa está na versão:", versao)
 }
 
+func exibeMenu() {
+	fmt.Println("1 - Inicar Monitoramento")
+	fmt.Println("2 - Exibir Logs")
+	fmt.Println("0 - Sair do Programa")
+}
+
 func leComando() int {
-	var comandoLido int
-
-	fmt.Scan(&comandoLido)
-	fmt.Println("O comando escolhido foi:", comandoLido)
-
-	return comandoLido
+	var comando int
+	fmt.Scan(&comando)
+	fmt.Println("O comando escolhido foi:", comando)
+	return comando
 }
